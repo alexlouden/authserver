@@ -1,15 +1,16 @@
-import logging
-
 from rest_framework import serializers
 from authserver.models import User, Role, APIKey
 
 
-logger = logging.getLogger(__name__)
+class JSONDataField(serializers.Field):
+    def to_representation(self, obj):
+        return obj.data
 
 
 class UserSerializer(serializers.ModelSerializer):
 
     roles = serializers.StringRelatedField(many=True)
+    data = JSONDataField()
 
     class Meta:
         model = User
@@ -23,7 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
         )
         extra_kwargs = {'password': {'write_only': True}}
         read_only_fields = (
-            'userdata',
+            'data',
         )
 
     def create(self, validated_data):
