@@ -127,6 +127,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class RoleViewSet(viewsets.ModelViewSet):
     queryset = Role.objects.all()
     serializer_class = RoleSerializer
+    lookup_field = 'name'
 
 
 class KeyViewSet(
