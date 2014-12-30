@@ -4,7 +4,10 @@ from authserver.models import User, Role, APIKey
 
 class JSONDataField(serializers.Field):
     def to_representation(self, obj):
-        return obj.data
+        if isinstance(obj, dict):
+            return obj
+        else:
+            return obj.data
 
 
 class UserSerializer(serializers.ModelSerializer):
