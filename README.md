@@ -23,6 +23,7 @@ Root:
 
 - List  
   GET `/api/user`
+
 - Create  
   POST `api/user`
 
@@ -30,8 +31,10 @@ Detail:
 
 - Fetch  
   GET `/api/user/<id>`
+
 - Update  
   PUT `/api/user/<id>`
+
 - Delete  
   DELETE `/api/user/<id>`
 
@@ -104,14 +107,22 @@ Keys:
 
 Root:
 
-- List - GET `/api/role`
-- Create - POST `api/role`
+- List  
+  GET `/api/role`
+
+- Create  
+  POST `api/role`
 
 Detail: (look up via role name)
 
-- Fetch - GET `/api/role/<name>`
-- Update - PUT `/api/role/<name>`
-- Delete - DELETE `/api/role/<name>`
+- Fetch  
+  GET `/api/role/<name>`
+
+- Update  
+  PUT `/api/role/<name>`
+
+- Delete  
+  DELETE `/api/role/<name>`
 
 
 # /api/key
