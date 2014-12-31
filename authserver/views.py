@@ -8,6 +8,7 @@ from authserver.serializers import (
     UserSerializer,
     RoleSerializer,
     KeySerializer,
+    OnlyKeySerializer,
     PasswordSerializer,
     SecretSerializer
 )
@@ -56,7 +57,7 @@ class UserViewSet(viewsets.ModelViewSet):
     @detail_route()
     def keys(self, request, pk=None):
         user = self.get_object()
-        serializer = KeySerializer(user.keys, many=True)
+        serializer = OnlyKeySerializer(user.keys, many=True)
         return Response(serializer.data)
 
     @detail_route(methods=['post'])

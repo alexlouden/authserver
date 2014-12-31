@@ -68,6 +68,16 @@ class KeySerializer(serializers.ModelSerializer):
         )
 
 
+class OnlyKeySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = APIKey
+        fields = (
+            'key',
+            'secret',
+        )
+
+
 class PasswordSerializer(serializers.Serializer):
 
     password = serializers.CharField(max_length=100)
