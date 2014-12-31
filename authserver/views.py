@@ -110,19 +110,21 @@ class UserViewSet(viewsets.ModelViewSet):
 
         return Response(user.add_role(role))
 
+    @detail_route(methods=['post'])
+    def remove_role(self, request, pk=None):
 
-# DONE
-# changePassword
-# checkPassword
-# roles
-# keys - create, list ()
-# authorise - add_role
-# checkAuthorisation - check_role
+        user = self.get_object()
 
-# TODO
+        serializer = RoleSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
-# User roles:
-# /api/user/{email}/role/{name}
+        role = serializer.validated_data['name']
+
+        return Response(user.remove_role(role))
 
 
 class RoleViewSet(viewsets.ModelViewSet):
@@ -155,7 +157,10 @@ class KeyViewSet(
         secret = serializer.validated_data['secret']
 
         if key.secret != secret:
-            return Response(False, status=status.HTTP_401_UNAUTHORIZED)
+            return Response(
+                {status: False},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
 
         serializer = KeySerializer(key)
         return Response(serializer.data)

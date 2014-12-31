@@ -94,6 +94,15 @@ class User(BaseModel, AbstractBaseUser):
         except:
             return False
 
+    def remove_role(self, role_name):
+
+        if not self.has_role(role_name):
+            return False
+
+        role = Role.object.get(name=role_name)
+        self.roles.remove(role)
+        return True
+
 
 class Role(BaseModel):
 
