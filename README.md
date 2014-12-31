@@ -21,14 +21,19 @@ Authserver
 
 Root:
 
-- List - GET `/api/user`
-- Create - POST `api/user`
+- List  
+  GET `/api/user`
+- Create  
+  POST `api/user`
 
 Detail:
 
-- Fetch - GET `/api/user/<id>`
-- Update - PUT `/api/user/<id>`
-- Delete - DELETE `/api/user/<id>`
+- Fetch  
+  GET `/api/user/<id>`
+- Update  
+  PUT `/api/user/<id>`
+- Delete  
+  DELETE `/api/user/<id>`
 
 Passwords:
 
@@ -113,7 +118,8 @@ Detail: (look up via role name)
 
 Root:
 
-- List - GET `/api/key`
+- List  
+  GET `/api/key`
 
 ```
 {
